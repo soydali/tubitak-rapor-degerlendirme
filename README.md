@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 5. `.env` dosyası oluşturun ve Groq API anahtarınızı ekleyin:
 ```
-GROQ_API_KEY=your_api_key_here
+API=your_api_key_here
 ```
 
 ## Çalıştırma
