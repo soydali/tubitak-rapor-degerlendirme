@@ -5,7 +5,7 @@ Bu proje, TÜBİTAK 2204-A raporlarını yapay zeka kullanarak değerlendiren bi
 ## Özellikler
 
 - PDF ve DOCX formatında rapor yükleme
-- Groq API kullanarak yapay zeka değerlendirmesi
+- Gemini API kullanarak yapay zeka değerlendirmesi
 - 100 üzerinden puanlama
 - Geliştirme önerileri
 - Modern ve kullanıcı dostu arayüz
