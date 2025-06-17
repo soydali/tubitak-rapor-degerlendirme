@@ -1,0 +1,10 @@
+flask==3.0.2
+python-dotenv==1.0.1
+groq==0.4.2
+python-docx==1.1.0
+PyPDF2==3.0.1
+Werkzeug==3.0.1
+markdown2==2.4.12
+Flask-Login==0.6.3
+Flask-SQLAlchemy==3.1.1 
+google-genai

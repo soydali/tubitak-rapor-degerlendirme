@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        min-height: 100vh;
+    }
+    .main-hero {
+        background: rgba(255,255,255,0.85);
+        border-radius: 2rem;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+        padding: 3rem 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .gradient-title {
+        background: linear-gradient(90deg, #6366f1 30%, #0ea5e9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .upload-btn {
+        transition: box-shadow 0.2s, transform 0.2s;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+    }
+    .upload-btn:hover {
+        box-shadow: 0 6px 24px rgba(99,102,241,0.18);
+        transform: translateY(-2px) scale(1.04);
+    }
+    .feature-card {
+        border: none;
+        border-radius: 1.2rem;
+        box-shadow: 0 2px 12px 0 rgba(99,102,241,0.08);
+        transition: box-shadow 0.2s, transform 0.2s;
+        background: #fff;
+    }
+    .feature-card:hover,.how-it-works-step:hover {
+        box-shadow: 0 8px 32px 0 rgba(99,102,241,0.16);
+        transform: translateY(-4px) scale(1.03);
+    }
+    .how-it-works-step {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 12px 0 rgba(99,102,241,0.08);
+        transition: box-shadow 0.2s, transform 0.2s;
+        min-height: 120px;
+    }
+    .how-it-works-icon {
+        font-size: 2.2rem;
+        color: #6366f1;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg">
+            <div class="main-hero d-flex flex-column flex-lg-row align-items-center justify-content-between">
+                <div class="flex-grow-1 text-center text-lg-start mb-4 mb-lg-0 pe-lg-5">
+                    <h1 class="display-4 fw-bold gradient-title mb-3">
+                        TÜBİTAK 2204-A Raporunu Yükle,<br class="d-none d-lg-block"> Yapay Zeka ile Değerlendir!
+                    </h1>
+                    <p class="lead fw-normal mb-4 text-secondary">
+                        Raporunu saniyeler içinde yükle, yapay zeka ile 100 üzerinden puanını ve geliştirme önerilerini hemen öğren.<br>
+                        <span class="fw-semibold text-primary">Kolay, hızlı ve güvenli!</span>
+                    </p>
+                    <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="mb-3">
+                        <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-lg-start align-items-center">
+                            <input placeholder="Dosya Seçin" type="file" class="form-control w-auto" id="file" name="file" accept=".pdf,.docx" required style="max-width: 250px;">
+                            <button type="submit" class="btn btn-primary btn-lg px-4 upload-btn">
+                                <i class="bi bi-upload"></i> Rapor Yükle
+                            </button>
+                        </div>
+                    </form>
+                    <div class="d-flex gap-3 mt-2 justify-content-center justify-content-lg-start">
+                        <span class="badge bg-light text-dark border"><i class="bi bi-filetype-pdf text-danger"></i> PDF</span>
+                        <span class="badge bg-light text-dark border"><i class="bi bi-filetype-docx text-primary"></i> DOCX</span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 d-none d-xl-flex align-items-center justify-content-center">
+                    <img src="{{ url_for('static', filename='images/file_upload.svg') }}" alt="Rapor Yükle" class="img-fluid" style="max-height: 320px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-10">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center h-100">
+                        <i class="bi bi-lightning-charge-fill text-primary fs-1"></i>
+                        <h5 class="mt-3 mb-2">Hızlı Sonuç</h5>
+                        <p class="text-muted mb-0">Raporunu yükle, saniyeler içinde puanını ve önerilerini al.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center h-100">
+                        <i class="bi bi-shield-lock-fill text-success fs-1"></i>
+                        <h5 class="mt-3 mb-2">Gizlilik</h5>
+                        <p class="text-muted mb-0">Yüklediğin dosyalar işlendikten sonra hemen silinir, verilerin güvende.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center h-100">
+                        <i class="bi bi-stars text-warning fs-1"></i>
+                        <h5 class="mt-3 mb-2">Yapay Zeka Destekli</h5>
+                        <p class="text-muted mb-0">Groq altyapısı ile akıllı ve detaylı değerlendirme.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-4">
+        <div class="col-md-10">
+            <h3 class="text-center fw-bold mb-4 gradient-title">Nasıl Çalışır?</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="how-it-works-step text-center h-100">
+                        <div class="how-it-works-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+                        <div class="fw-semibold mb-1">1. Raporunu Yükle</div>
+                        <div class="text-muted small">PDF veya DOCX formatında raporunu seç ve yükle.</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="how-it-works-step text-center h-100">
+                        <div class="how-it-works-icon"><i class="bi bi-cpu"></i></div>
+                        <div class="fw-semibold mb-1">2. Yapay Zeka Analizi</div>
+                        <div class="text-muted small">Groq yapay zekası raporunu analiz eder ve puanlar.</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="how-it-works-step text-center h-100">
+                        <div class="how-it-works-icon"><i class="bi bi-emoji-smile"></i></div>
+                        <div class="fw-semibold mb-1">3. Sonucu Gör</div>
+                        <div class="text-muted small">Puanını ve geliştirme önerilerini hemen öğren!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
