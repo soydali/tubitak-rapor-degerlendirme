@@ -34,7 +34,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-5. `.env` dosyası oluşturun ve Groq API anahtarınızı ekleyin:
+5. `.env` dosyası oluşturun ve Gemini API anahtarınızı ekleyin:
 ```
 API=your_api_key_here
 ```
